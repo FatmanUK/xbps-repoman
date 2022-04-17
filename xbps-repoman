@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+# pylint: disable=invalid-name
+"""xbps-repoman.
+
+Usage:
+  xbps-repoman
+  xbps-repoman (-h | --help)
+  xbps-repoman (-v | --version)
+
+Options:
+  -h --help     Show this screen.
+  -v --version  Show version.
+"""
+
+from docopt import docopt
+from xbpsrepoman import RepoManager
+from config import *
+
+def main():
+    """Main entry point processes options and creates instance and
+    starts"""
+    arguments = docopt(__doc__, version=VERSION)
+    xbpsrm=RepoManager(arguments)
+    xbpsrm.start_ui()
+
+if __name__ == '__main__':
+    main()
